@@ -1,0 +1,19 @@
+{
+  "name": "ccalcagno/authorization",
+  "description": "Uma lib de autorização",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Cleber Calcagno",
+      "email": "cleber.recoliano@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Calcagno\\Authorization\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.2"
+  }
+}
