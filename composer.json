@@ -2,6 +2,7 @@
   "name": "ccalcagno/authorization",
   "description": "Uma lib de autorização",
   "type": "library",
+  "license": "MIT",
   "authors": [
     {
       "name": "Cleber Calcagno",
