@@ -8,6 +8,7 @@ use Calcagno\Authorization\Contracts\UserRepositoryInterface;
 use Calcagno\Authorization\Entities\AuthUser;
 use Calcagno\Authorization\Exceptions\AuthenticationException;
 use Calcagno\Authorization\Exceptions\InactiveUserException;
+use Calcagno\Authorization\Exceptions\UserNotFoundException;
 
 final class UserManager
 {
@@ -24,7 +25,11 @@ final class UserManager
   {
     $user = $this->repository->findByUsername($username);
 
-    if (!$user || !$this->verify($password, $user->getPasswordHash())) {
+    if ($user == null) {
+      throw new UserNotFoundException("Usuário ou senha inválidos.");
+    }
+
+    if (!$this->verify($password, $user->getPasswordHash())) {
       throw new AuthenticationException("Usuário ou senha inválidos.");
     }
 
@@ -63,7 +68,7 @@ final class UserManager
     return $user;
   }
 
-  public function updatePassword(string $id, string $newPassword): void
+  public function updatePassword(int $id, string $newPassword): void
   {
     $user = $this->repository->findById($id);
     if (!$user) {

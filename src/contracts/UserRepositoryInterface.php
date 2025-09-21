@@ -8,7 +8,7 @@ use Calcagno\Authorization\Entities\AuthUser;
 
 interface UserRepositoryInterface
 {
-  public function findById(string $id): ?AuthUser;
+  public function findById(int $id): ?AuthUser;
   public function findByUsername(string $username): ?AuthUser;
   public function findByEmail(string $email): ?AuthUser;
   public function create(AuthUser $user): void;
